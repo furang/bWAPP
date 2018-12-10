@@ -1,7 +1,9 @@
 FROM tutum/lamp:latest
 
-RUN rm -rf /app
+RUN apt-get update && apt-get install -y php5-dev dh-make-php
 
-COPY  /app /app/
+RUN yes | pecl install xdebug-2.5.5
+
+RUN rm -rf /app
 
 CMD ["/run.sh"]
